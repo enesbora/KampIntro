@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GameProject.Adapters;
+using GameProject.Business.Concrete;
+using GameProject.Entities.Concrete;
+using System;
 
 namespace GameProject
 {
@@ -6,16 +9,30 @@ namespace GameProject
     {
         static void Main(string[] args)
         {
-            GamerManager gamerManager = new GamerManager(new NewEStateUserValidationManager());
-            gamerManager.Add(new Gamer
+            GamerManager gamerManager = new GamerManager(new UserValidationManager());
+            Gamer gamer = new Gamer
             {
-                Id = 1, 
-                BirthYear = 1984, 
-                FirstName = "ENES", 
-                LastName = "BORA", 
+                GamerId = 1,
+                DateOfBirth = new DateTime(1984, 03, 02),
+                FirstName = "ENES",
+                LastName = "BORA",
                 IdentityNumber = 12607745192
-            });
-            Console.WriteLine("Hello World!");
+            };
+            gamerManager.Add(gamer);
+
+            CampaignRateManager campaignRateManager = new CampaignRateManager();
+            Campaign campaign = new Campaign { CampaingId = 1, CampaingName = "Eğlenceli %25 İndirim", DiscountRate = 0.25M };
+            campaignRateManager.Add(campaign);
+
+            GameManager gameManager = new GameManager();
+            Game game = new Game { GameId = 1, GameName = "Minecraft", GamePrice = 145 };
+            gameManager.Add(game);
+           
+
+            SalesManager salesManager = new SalesManager();            
+            salesManager.Sales(gamer, game);
+            salesManager.CampaignSales(game, gamer, campaign);
+
         }
     }
 }
