@@ -1,5 +1,6 @@
 ﻿using System;
 
+//Döngüler
 namespace Loops
 {
     class Program

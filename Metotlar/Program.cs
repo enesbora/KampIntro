@@ -49,4 +49,4 @@ namespace Metotlar
 
 
 
-// Do not repeat yourself - DRY - Clean Code - Best Practice
+// Do not repeat yourself - DRY - Clean Code - Best Practice!

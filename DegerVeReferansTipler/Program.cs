@@ -1,5 +1,6 @@
 ﻿using System;
 
+//önemli
 namespace DegerVeReferansTipler
 {
     class Program
